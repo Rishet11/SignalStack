@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-pydantic
-yfinance
-langchain
-python-dotenv
-# Core LLM packages for the Synthesis Agent
-google-generativeai
-openai
