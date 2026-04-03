@@ -1,0 +1,16 @@
+{
+  "ticker": "TCS",
+  "company_name": "Tata Consultancy Services Limited",
+  "confidence_score": 72.0,
+  "primary_signal_type": "MACD_Bullish_Crossover",
+  "direction": "bullish",
+  "thesis": "TCS is showing a momentum shift as it tests the lower bound of its 6-month ascending channel.",
+  "detailed_reasoning": "TCS has been underperforming the broader index but has found strong support at the 4,000 level. The MACD has just crossed the signal line from below, indicating a potential reversal. Context Intel suggests that while IT spending globally is cautious, TCS's recent deal wins in the UK are under-priced by the market. Sentiment is neutral-to-bullish.",
+  "action_suggestion": "Target 4,250 with a stop loss below 3,950. This is a mean-reversion play.",
+  "evidence_sources": [
+    { "source_type": "technical", "snippet": "MACD Crossover confirmed on daily timeframe; RSI at 42 leaving significant room." },
+    { "source_type": "news", "snippet": "Economic Times reports $800M deal win for TCS with UK-based insurance major." },
+    { "source_type": "pattern", "snippet": "Support bounce pattern at 4,000 historical psychological level." }
+  ],
+  "behavioral_warning": null
+}

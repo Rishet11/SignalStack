@@ -1,0 +1,22 @@
+[
+  {"symbol": "RELIANCE", "name": "Reliance Industries Limited", "sector": "Energy"},
+  {"symbol": "TCS", "name": "Tata Consultancy Services Limited", "sector": "IT"},
+  {"symbol": "HDFCBANK", "name": "HDFC Bank Limited", "sector": "Financials"},
+  {"symbol": "INFY", "name": "Infosys Limited", "sector": "IT"},
+  {"symbol": "ICICIBANK", "name": "ICICI Bank Limited", "sector": "Financials"},
+  {"symbol": "HINDUNILVR", "name": "Hindustan Unilever Limited", "sector": "Consumer Goods"},
+  {"symbol": "SBIN", "name": "State Bank of India", "sector": "Financials"},
+  {"symbol": "BHARTIARTL", "name": "Bharti Airtel Limited", "sector": "Telecom"},
+  {"symbol": "ITC", "name": "ITC Limited", "sector": "Consumer Goods"},
+  {"symbol": "KOTAKBANK", "name": "Kotak Mahindra Bank Limited", "sector": "Financials"},
+  {"symbol": "TATAMOTORS", "name": "Tata Motors Limited", "sector": "Automotive"},
+  {"symbol": "ADANIENT", "name": "Adani Enterprises Limited", "sector": "Energy"},
+  {"symbol": "WIPRO", "name": "Wipro Limited", "sector": "IT"},
+  {"symbol": "TITAN", "name": "Titan Company Limited", "sector": "Consumer Goods"},
+  {"symbol": "HCLTECH", "name": "HCL Technologies Limited", "sector": "IT"},
+  {"symbol": "SUNPHARMA", "name": "Sun Pharmaceutical Industries Limited", "sector": "Healthcare"},
+  {"symbol": "BAJFINANCE", "name": "Bajaj Finance Limited", "sector": "Financials"},
+  {"symbol": "LTI", "name": "LTI Mindtree Limited", "sector": "IT"},
+  {"symbol": "ONGC", "name": "Oil and Natural Gas Corporation Limited", "sector": "Energy"},
+  {"symbol": "JSWSTEEL", "name": "JSW Steel Limited", "sector": "Basic Materials"}
+]

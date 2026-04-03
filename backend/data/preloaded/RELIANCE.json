@@ -1,0 +1,20 @@
+{
+  "ticker": "RELIANCE",
+  "company_name": "Reliance Industries Limited",
+  "confidence_score": 88.5,
+  "primary_signal_type": "Price_Breakout",
+  "direction": "bullish",
+  "thesis": "Reliance has cleared the 3,000 resistance on massive volume, with new energy ventures serving as catalysts.",
+  "detailed_reasoning": "Reliance shows a classic 'Buy the Breakout' setup. The stock has consolidated for 3 months between 2,800 and 2,950. Yesterday's 4% move on 2.5x average volume confirms the breakout. Sentiment is bolstered by news of a major JV in the solar sector and positive management commentary on retail margins. RSI is at 62, suggesting there is still room before it reaches overbought territory.",
+  "action_suggestion": "Accumulate on pullbacks to 2,980. Trend remains strongly bullish.",
+  "evidence_sources": [
+    { "source_type": "technical", "snippet": "20-day High breakout at 2,985 confirmed with 240% volume spike." },
+    { "source_type": "news", "snippet": "Source via Livemint: Reliance Green Energy signs $2Bn deal for hydrogen electrolyzers." },
+    { "source_type": "historical", "snippet": "Similar setups in Nov 2023 led to a 12% upside over the following 15 sessions." }
+  ],
+  "behavioral_warning": {
+    "risk_type": "Mild FOMO",
+    "severity": "low",
+    "explanation": "Retail participation has spiked in the last 48 hours; wait for a retest of the breakout level for optimal entry."
+  }
+}
