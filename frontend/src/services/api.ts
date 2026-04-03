@@ -1,7 +1,7 @@
 import axios from 'axios';
-import type { OpportunityCard, TickerInfo, AuditTrail } from '../types';
+import type { OpportunityCard, TickerInfo, AuditTrail, AnalyzeTickerResponse, ChartPoint } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -12,7 +12,7 @@ export const signalsApi = {
     const response = await api.get('/signals/opportunities');
     return response.data;
   },
-  analyzeTicker: async (ticker: string): Promise<OpportunityCard> => {
+  analyzeTicker: async (ticker: string): Promise<AnalyzeTickerResponse> => {
     const response = await api.post(`/signals/analyze/${ticker}`);
     return response.data;
   },
@@ -27,7 +27,7 @@ export const tickerApi = {
     const response = await api.get(`/ticker/${symbol}`);
     return response.data;
   },
-  getChartData: async (symbol: string): Promise<any[]> => {
+  getChartData: async (symbol: string): Promise<ChartPoint[]> => {
     const response = await api.get(`/ticker/${symbol}/chart`);
     return response.data;
   },

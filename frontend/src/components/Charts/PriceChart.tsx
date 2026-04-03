@@ -5,18 +5,10 @@ import {
   CandlestickSeries,
   HistogramSeries,
 } from 'lightweight-charts';
-
-interface OHLCVData {
-  time: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-}
+import type { ChartPoint } from '../../types';
 
 interface PriceChartProps {
-  data: OHLCVData[];
+  data: ChartPoint[];
 }
 
 const PriceChart: React.FC<PriceChartProps> = ({ data }) => {

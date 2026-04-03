@@ -1,8 +1,8 @@
-from fastapi import APIRouter, HTTPException, BackgroundTasks
-from typing import List, Optional
+from fastapi import APIRouter, HTTPException
+from typing import List
 import uuid
 import json
-from ..schemas import OpportunityCard, TickerInfo
+from ..schemas import OpportunityCard, AnalyzeTickerResponse
 from ..agents.graph import run_signal_analysis
 from ..database import cache_opportunity_card, log_audit_entry, DB_PATH
 import aiosqlite
@@ -25,7 +25,7 @@ async def get_opportunities():
         logger.error(f"Error fetching opportunities: {e}")
         return []
 
-@router.post("/analyze/{ticker}", response_model=OpportunityCard)
+@router.post("/analyze/{ticker}", response_model=AnalyzeTickerResponse)
 async def analyze_ticker(ticker: str):
     """Trigger a full 6-agent analysis for a given ticker."""
     request_id = str(uuid.uuid4())
@@ -48,7 +48,7 @@ async def analyze_ticker(ticker: str):
         for entry in final_state.get("audit_entries", []):
              await log_audit_entry(request_id, ticker, entry.model_dump())
              
-        return card
+        return AnalyzeTickerResponse(request_id=request_id, opportunity_card=card)
 
     except Exception as e:
         logger.error(f"Error analyzing {ticker}: {e}")

@@ -58,6 +58,10 @@ class OpportunityCard(BaseModel):
     evidence_sources: List[EvidenceSource]
     behavioral_warning: Optional[BehavioralRisk] = None
 
+class AnalyzeTickerResponse(BaseModel):
+    request_id: str
+    opportunity_card: OpportunityCard
+
 # We can define the SignalState type natively in state.py using TypedDict.
 # Here we define the audit trail outputs
 

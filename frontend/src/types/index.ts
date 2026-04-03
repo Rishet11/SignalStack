@@ -61,6 +61,20 @@ export interface OpportunityCard {
   behavioral_warning?: BehavioralRisk;
 }
 
+export interface ChartPoint {
+  time: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
+export interface AnalyzeTickerResponse {
+  request_id: string;
+  opportunity_card: OpportunityCard;
+}
+
 export interface AuditEntry {
   agent_name: string;
   duration_ms: number;

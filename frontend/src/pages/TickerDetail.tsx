@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { tickerApi, signalsApi } from '../services/api';
-import type { TickerInfo, OpportunityCard } from '../types';
+import type { TickerInfo, OpportunityCard, ChartPoint } from '../types';
 import PriceChart from '../components/Charts/PriceChart';
 import { Loader } from '../components/Common';
 import { ShieldAlert, Info, Clock } from 'lucide-react';
+
+const getAuditKey = (ticker: string) => `signalstack:last-audit:${ticker.toUpperCase()}`;
 
 const TickerDetail: React.FC = () => {
   const { symbol } = useParams<{ symbol: string }>();
   const [tickerInfo, setTickerInfo] = useState<TickerInfo | null>(null);
   const [card, setCard] = useState<OpportunityCard | null>(null);
-  const [chartData, setChartData] = useState<any[]>([]);
+  const [chartData, setChartData] = useState<ChartPoint[]>([]);
+  const [requestId, setRequestId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [analyzing, setAnalyzing] = useState(false);
 
   useEffect(() => {
     if (!symbol) return;
+    const normalizedSymbol = symbol.toUpperCase();
     
     const fetchData = async () => {
       try {
         const [info, chart] = await Promise.all([
-          tickerApi.getInfo(symbol),
-          tickerApi.getChartData(symbol)
+          tickerApi.getInfo(normalizedSymbol),
+          tickerApi.getChartData(normalizedSymbol)
         ]);
         setTickerInfo(info);
         setChartData(chart);
+        setRequestId(localStorage.getItem(getAuditKey(normalizedSymbol)));
         
         // Try to fetch existing card
         const opps = await signalsApi.getOpportunities();
-        const existing = opps.find(o => o.ticker === symbol);
+        const existing = opps.find(o => o.ticker === normalizedSymbol);
         if (existing) setCard(existing);
       } catch (err) {
         console.error("Failed to fetch ticker data:", err);
@@ -44,8 +49,11 @@ const TickerDetail: React.FC = () => {
      if (!symbol) return;
      setAnalyzing(true);
      try {
-       const result = await signalsApi.analyzeTicker(symbol);
-       setCard(result);
+       const normalizedSymbol = symbol.toUpperCase();
+       const result = await signalsApi.analyzeTicker(normalizedSymbol);
+       setCard(result.opportunity_card);
+       setRequestId(result.request_id);
+       localStorage.setItem(getAuditKey(normalizedSymbol), result.request_id);
      } catch (err) {
        console.error("Analysis failed:", err);
      } finally {
@@ -119,10 +127,12 @@ const TickerDetail: React.FC = () => {
                   </ul>
                </div>
 
-               <div className="link-audit">
-                  <Clock size={16} />
-                  <span>Agent traces coming soon...</span>
-               </div>
+               {requestId && (
+                  <Link to={`/audit/${requestId}`} className="link-audit">
+                     <Clock size={16} />
+                     <span>View agent trace</span>
+                  </Link>
+               )}
              </>
           )}
         </div>

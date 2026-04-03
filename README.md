@@ -44,8 +44,21 @@ cd backend
 python -m venv venv
 source venv/bin/activate  # Mac/Linux
 pip install -r requirements.txt
-cp .env.example .env      # Add your GEMINI_API_KEY
+cp ../.env.example ../.env
 python -m app.main
+```
+
+### 2a. Backend Smoke Test
+Run this before the demo to verify the repo contains the expected demo assets and, when available, that the backend imports cleanly:
+
+```bash
+python backend/scripts/smoke_test.py
+```
+
+To check a running backend as well:
+
+```bash
+SIGNALSTACK_HEALTHCHECK_URL="http://localhost:8000/health" python backend/scripts/smoke_test.py
 ```
 
 ### 3. Frontend Setup
@@ -53,6 +66,12 @@ python -m app.main
 cd frontend
 npm install
 npm run dev
+```
+
+To point the frontend at a non-local backend, set `VITE_API_BASE_URL` before starting or building:
+
+```bash
+export VITE_API_BASE_URL="https://your-backend.example.com/api"
 ```
 
 ---
